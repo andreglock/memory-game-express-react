@@ -9,7 +9,7 @@ import seven from '../images/pairSeven.jpg';
 import eight from '../images/pairEight.jpg';
 import checkPair from '../functions/checkPair';
 
-export default function Cards () {
+export default function Cards (props) {
     const images = [
         one, two, three, four, five, six, seven, eight,
         one, two, three, four, five, six, seven, eight,
@@ -20,7 +20,7 @@ export default function Cards () {
     // Add images randomly
     while (images.length > 0) {
         const randomIndex = Math.floor(Math.random() * images.length);
-        const cardTemp = createCard(images[randomIndex]);
+        const cardTemp = createCard(images[randomIndex], props.setMatchedPairs);
         cards.push(cardTemp);
         images.splice(randomIndex, 1);
     }
@@ -34,7 +34,7 @@ export default function Cards () {
 function createCard(image, setMatchedPairs) {
 
     return <div className={`flip-card ${image}`} onClick={(e) => {
-            checkPair(e.target.parentNode.parentNode.parentNode)
+            checkPair(e.target.parentNode.parentNode.parentNode, '', setMatchedPairs)
         }}>
         <div className="flip-card-inner">
             <div className="flip-card-front">
@@ -44,5 +44,5 @@ function createCard(image, setMatchedPairs) {
                 <img src={image} alt={`${image}`} style={{width:"200px", height:"200px"}} />
             </div>
         </div>
-    </div> 
+    </div>
 }

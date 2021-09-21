@@ -2,6 +2,7 @@ import flipCard from "./flipCard";
 
 let firstCard = undefined;
 let clicked = 2;
+let matched = 0;
 
 export default function checkPair (card, start, setMatchedPairs) {
     
@@ -18,7 +19,8 @@ export default function checkPair (card, start, setMatchedPairs) {
     if (flipped) {
         return;
     }
-
+/*     const matched = parseInt(document.getElementById('matched').innerText);
+    setMatchedPairs(matched + 1); */
     if (firstCard) {
         clicked++;
         // select the second card
@@ -27,9 +29,11 @@ export default function checkPair (card, start, setMatchedPairs) {
             // restart clicked
             clicked = 0;
             // iterate matched
-            let matched = parseInt(document.getElementById('matched').innerText);
-            // can't call hook here:
-            setMatchedPairs(matched + 1);
+            matched = matched + 1;
+            document.getElementById('matched').innerText = matched;
+            if (matched === 8) {
+                setMatchedPairs(matched);
+            }
         } else {
             setTimeout(() => {
                 card.classList.remove("flipped");
