@@ -1,43 +1,20 @@
 import checkPair from '../functions/checkPair';
-import { useEffect } from 'react';
-import SubmitScores from './SubmitScores';
+import timerHandler from '../functions/timerHandler';
 
-export default function ScoreBoard (props) {    
-    let timerInterval;
+export default function ScoreBoard () {    
     
-    useEffect(() => {
-        if (props.matchedPairs === 8) {
-            clearInterval(timerInterval);
-        }
-    }, [props.matchedPairs, timerInterval])
-    
-    let deciseconds = 0;
-    let seconds = 0;
-    let minutes = 0;
-
-    function runTimer(parent) { 
-        if (deciseconds === 0 && seconds === 0 && minutes === 0) {
-            timerInterval = setInterval(() => {
-                deciseconds++;
-                if (deciseconds === 10) {
-                    seconds++;
-                    deciseconds = 0;
-                } if (seconds === 60) {
-                    minutes++;
-                    seconds = 0;
-                }
-                parent.lastChild.innerText = `${minutes}:${(seconds >= 10) ? '' : 0}${seconds}${deciseconds}`
-            }, 100)
-        }
-    }
-
-    return <div id="scoreboard">
-        <div id="matched">{props.matchedPairs}</div>
-        <button onClick={(e) => {
-            checkPair(e, 'key');
-            runTimer(e.target.parentNode)
-        }}>Start the game!</button>
-        <div id="timer">0:000</div>
-        <SubmitScores />
+    return <div id="scoreboard" className="d-flex mx-auto">
+        <div>
+            <div className="p-1">Matched pairs:<span id="matched">0</span></div>
+            <div className="p-1">Wrong tries:<span id="wrong">0</span></div>
+        </div>
+        <button className="mx-md-3" onClick={(e) => {
+            checkPair(e, 'start');
+            timerHandler(e.target.parentNode);
+        }}>Start!</button>
+        <div>
+            <div className="p-1">Elapsed time:</div>
+            <div id="timer" className="p-1">0:000</div>
+        </div>
     </div>
 }

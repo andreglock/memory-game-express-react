@@ -1,16 +1,9 @@
 {
   "posts": [
     {
-      "content": "Hello this is a test 3",
-      "title": "First",
-      "updated": true,
-      "id": 1321901779835
-    },
-    {
-      "content": "Content of a post",
-      "title": "Test",
-      "updated": true,
-      "id": 9903167267750
+      "name": "Awesome Carrot",
+      "score": 584,
+      "id": 958824151893
     }
   ]
 }

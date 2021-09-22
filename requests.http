@@ -4,30 +4,15 @@ GET http://localhost:5000/posts
 
 DELETE http://localhost:5000/posts/5610612881721
 
-### 
-
-PUT http://localhost:5000/posts/529513313705
-Content-Type: application/json
-
-{
-    "content": "First one - but updated!!!",
-    "title": "First",
-    "updated": true
-}
-
 ###
 
 POST http://localhost:5000/posts
 Content-Type: application/json
 
 {
-    "content": "Hello this is a test 3",
-    "title": "First",
-    "updated": true
+    "name": "Awesome Carrot",
+    "score": 584,
+    "id": 958824151893
 }
-
-###
-
-PUT http://localhost:3012/strawberry/one
 
 

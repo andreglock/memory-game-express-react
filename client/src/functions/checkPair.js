@@ -1,15 +1,17 @@
 import flipCard from "./flipCard";
+import { wrongCounter, matchedCounter } from "./scoreCounter";
 
 let firstCard = undefined;
 let clicked = 2;
-let matched = 0;
 
-export default function checkPair (card, start, setMatchedPairs) {
+export default function checkPair (card, command, setShow) {
     
     // disabled before start button is clicked
-    if (start === 'key') {
+    if (command === 'start') {
         clicked = 0;
         return;
+    } else if (command === 'reset') {
+        clicked = 2;
     }
     // Wait for unmatched pair to flip back
     if ( clicked === 2 ) {
@@ -19,8 +21,7 @@ export default function checkPair (card, start, setMatchedPairs) {
     if (flipped) {
         return;
     }
-/*     const matched = parseInt(document.getElementById('matched').innerText);
-    setMatchedPairs(matched + 1); */
+    
     if (firstCard) {
         clicked++;
         // select the second card
@@ -29,12 +30,10 @@ export default function checkPair (card, start, setMatchedPairs) {
             // restart clicked
             clicked = 0;
             // iterate matched
-            matched = matched + 1;
-            document.getElementById('matched').innerText = matched;
-            if (matched === 8) {
-                setMatchedPairs(matched);
-            }
+            matchedCounter(setShow);
         } else {
+            // iterate wrong counter
+            wrongCounter();
             setTimeout(() => {
                 card.classList.remove("flipped");
                 firstCard.classList.remove("flipped");
