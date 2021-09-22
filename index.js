@@ -16,12 +16,6 @@ app.use(express.json());
 // "Post" endpoints
 app.use('/posts', postsRouter);
 
-// Wildcard endpoint, runs for everything..... except errors!
-app.use(wildcardEndpoint);
-
-// This middleware handles all uncaught errors
-app.use(globalErrorHandler);
-
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
@@ -30,6 +24,12 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
+
+// Wildcard endpoint, runs for everything..... except errors!
+app.use(wildcardEndpoint);
+
+// This middleware handles all uncaught errors
+app.use(globalErrorHandler);
 
 const port = process.env.PORT || 5000;
 app.listen(port);
