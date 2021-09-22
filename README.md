@@ -1,6 +1,9 @@
 # Memory Game App
 
+This project is the first application I deployed that has both a back and a frontend. It will also be the final project for [CS50x](https://cs50.harvard.edu/x/) an amazing course from Harvard University with professor David J. Malan and a great staff. 
+
 This is a memory game that uses an Express server and a React frontend.
+
 Here is a link for a video demonstration: <URL HERE>
 
 ## How it works
