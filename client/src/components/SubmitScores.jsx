@@ -7,7 +7,8 @@ export default function SubmitScores (props) {
   
     const handleClose = () => {
         // reset wrong:
-        document.getElementById('wrong').innerText = 0;
+        document.getElementById('timer').innerText = "0:000";
+        document.getElementById('wrong').innerText = "0";
         props.setShow(false);
     }
 
@@ -52,9 +53,9 @@ export default function SubmitScores (props) {
                         <div>Would you like to submit your score?</div>
                         <div className="d-flex justify-content-around">
                             <input type="submit" value="Yes" className="btn btn-primary" onClick={(e) => {
-                                e.preventDefault()
-                                const name = e.target.parentNode[0].value;
-                                //make post req to express
+                                e.preventDefault()                                
+                                const name = document.getElementById("playerName").value;
+                                // make post req to express
                                 if (name.length > 2 && name.length < 23 && score > 0) {
                                 fetch('/posts', { 
                                     method: 'POST',
@@ -69,7 +70,7 @@ export default function SubmitScores (props) {
                                     .then(res => res.json())
                                     .catch(err => console.warn(err));
                                 }
-                                props.setShow(false);
+                                handleClose();
                             }}/>
                             <Button variant="secondary" onClick={handleClose}>
                                 Close

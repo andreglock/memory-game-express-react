@@ -11,11 +11,13 @@
 #scoreboard {
     padding: 20px;
     text-align: center;
-    width: max-content;
+    justify-content: space-around;
+    max-width: 600px;
 }
 #scoreboard button {
     padding: 20px 40px;
-    border-radius: 10px;
+    border-radius: 15px;
+    background-color: #ff8080;
 }
 #scoreboard #timer {
     font-family: 'Orbitron', sans-serif;
@@ -48,14 +50,42 @@
     display: block;
 }
 
+.card-size {
+    height: 80px;
+    width: 80px;
+}
+
 /* Flip card style from https://www.w3schools.com/howto/howto_css_flip_card.asp */
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
     background-color: transparent;
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     border: 1px solid #f1f1f1;
     perspective: 1000px;
+}
+
+
+@media (min-width: 576px) {
+    .card-size {
+        height: 110px;
+        width: 110px;
+    }
+    .flip-card {
+        height: 110px;
+        width: 110px; 
+    }
+}
+
+@media (min-width: 768px) {
+    .card-size {
+        height: 150px;
+        width: 150px;
+    }
+    .flip-card {
+        height: 150px;
+        width: 150px; 
+    }
 }
 
 /* This container is needed to position the front and back side */

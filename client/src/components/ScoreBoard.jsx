@@ -12,7 +12,7 @@ export default function ScoreBoard () {
                 <span id="wrong" className="p-1">0</span>
             </div>
         </div>
-        <button className="mx-md-3" onClick={(e) => {
+        <button className="mx-md-3 py-2 px-4 px-lg-5" onClick={(e) => {
             checkPair(e, 'start');
             timerHandler(e.target.parentNode);
         }}>Start!</button>

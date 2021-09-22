@@ -9,10 +9,10 @@ export default function createCard (image, setShow) {
         }}>
         <div className="flip-card-inner">
             <div className="flip-card-front">
-                <img src={question} alt="questionmark" style={{width:"150px", height:"150px"}} />
+                <img src={question} alt="questionmark" className="card-size"/>
             </div>
             <div className="flip-card-back">
-                <img src={image} alt={`${image}`} style={{width:"150px", height:"150px"}} />
+                <img src={image} alt={`${image}`} className="card-size"/>
             </div>
         </div>
     </div>

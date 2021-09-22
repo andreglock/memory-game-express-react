@@ -12,13 +12,10 @@ export default function ShowScores (props) {
             .then(res => res.json())
             .then(data => {
                 data.sort((a, b) => b.score - a.score);
-                setScores(data)
-                console.log(data)                    
+                setScores(data)                  
                 })
-            .catch(err => console.warn(err)); 
-    })
-
-    // sort scores
+            .catch(err => console.warn(err));
+    }, [])
 
     return (
         <>  
@@ -34,14 +31,15 @@ export default function ShowScores (props) {
                 <Modal.Body>
                     <ol className="list-group list-group-numbered">
                         {scores ?
-                        scores.map((score) => <li className="d-flex list-group-item">
+                        scores.map((score) => 
+                        <li className="d-flex list-group-item" key={ Math.floor( Math.random() * 100000 ) }>
                             <span className="flex-grow-1 px-2">{score.name}</span>
                             <span>{score.score}</span>
                         </li>) :
                         <></>
                         }
                     </ol>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleClose} className="m-2">
                         Close
                     </Button>
                 </Modal.Body>
