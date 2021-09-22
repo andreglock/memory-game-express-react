@@ -1,4 +1,4 @@
-import './App.scss';
+import './App.css';
 import { useState } from "react";
 import Cards from './components/Cards';
 import ScoreBoard from './components/ScoreBoard';
