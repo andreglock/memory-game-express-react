@@ -1,12 +1,12 @@
 # Memory Game App
 
+Video Demo:  <https://www.youtube.com/watch?v=ZRMigGBBGRo>
+
 This project is the first application I deployed that has both a back and a frontend. It was also my final project for [CS50x](https://cs50.harvard.edu/x/) an amazing computer science course from Harvard University with professor David J. Malan and a great staff. CS50x was the reason I decided to dedicate myself to coding full time.
 
 [This project was deployed here](https://memory-game-scores.herokuapp.com/)
 
 This is a memory game that uses an Express server and a React frontend.
-
-Here is a link for a video demonstration: <URL HERE>
 
 ## How it works
 
@@ -21,5 +21,7 @@ The logic behind the game was made in JavaScript, I tried to use as many differe
 The high scores are stored in a lowDB database that is handled by an Express server. When Hall of Fame is displayed it sends a GET request to the server, that read the high scores in the database. When a score is submitted a POST request will be send to the server that will add a name and score in the database.
 
 ### Final Note
+
+Unfortunately after this application was deployed I realized lowDB doesn't work on Heroku. Therefore, I will replace lowDB with postgreSQL that should work on Heroku. However, because I never worked with Postgres before this might take a while.
 
 The structure of an Express back end and a React frontend that is able to be deployed to a single Heroku app was made based on the tutorial from: https://daveceddia.com/deploy-react-express-app-heroku/.
