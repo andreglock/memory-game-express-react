@@ -10,7 +10,14 @@ This is a memory game that uses an Express server and a React frontend.
 
 ## How it works
 
-Like usual memory games you flip a card and then flip another one trying to match it. If the cards are matched they will remain open, if they don't match they will close after one second. This game will also keep track of time and wrong guesses in order to calculate the score. When the 8 pairs are matched, the game ends and the score is calculated. After the game ends your score will be displayed and you will have the opportunity to submit your scores and be in the Hall of Fame.
+Like usual memory games you flip a card and then flip another one trying to match it. If the cards are matched they will remain open, if they don't match they will close after one second has elapsed. This game will also keep track of time and wrong guesses in order to calculate the score. When the 8 pairs are matched, the game ends and the score is calculated. After the game ends your score will be displayed and you will have the opportunity to submit your scores and be in the Hall of Fame.
+
+How my score was calculated? You can see that when hovering the question mark next to your score, but I'm not going to make you look all the way there again, here is the formula: `score = 10000 * ( 1 / ( elapsedSeconds + wrong * 2 ) )`
+- Where:
+    - elapsedSeconds are the seconds taken for completion
+    - wrong are the times a pair was opened without being matched
+    
+Can you beat the awesome carrot score?
 
 ## Front end
 
