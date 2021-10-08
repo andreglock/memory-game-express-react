@@ -1,5 +1,5 @@
 {
-  "name": "memory-game-scores",
+  "name": "express-react",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,8 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "lowdb": "^3.0.0"
+    "mongoose": "^5.13.8"
   },
   "engines": {
     "node": "16.7.0"

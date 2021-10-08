@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 
 export default function ShowScores (props) {
     const [scores, setScores] = useState(false);
+    const [moreScores, setMoreScores] = useState(false);
 
     const handleClose = () => props.setShow(false);
 
@@ -12,7 +13,13 @@ export default function ShowScores (props) {
             .then(res => res.json())
             .then(data => {
                 data.sort((a, b) => b.score - a.score);
-                setScores(data)                  
+                if (data.length > 14) {
+                    const moreData = data.splice(15);
+                    setMoreScores(moreData);
+                    console.log(moreScores) 
+                    // this is here to avoid a non usage warning before I reach 15 scores
+                }
+                setScores(data);
                 })
             .catch(err => console.warn(err));
     }, [])
@@ -36,7 +43,7 @@ export default function ShowScores (props) {
                             <span className="flex-grow-1 px-2">{score.name}</span>
                             <span>{score.score}</span>
                         </li>) :
-                        <></>
+                        <div>Loading scores...</div>
                         }
                     </ol>
                     <Button variant="secondary" onClick={handleClose} className="m-2">

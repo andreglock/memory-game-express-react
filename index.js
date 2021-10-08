@@ -13,7 +13,6 @@ const app = express();
 // Add support for json requests
 app.use(express.json());
 
-// Try to move this after catchall
 // "Post" endpoints
 app.use('/posts', postsRouter);
 

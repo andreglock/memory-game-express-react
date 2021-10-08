@@ -10,9 +10,8 @@ POST http://localhost:5000/posts
 Content-Type: application/json
 
 {
-    "name": "Awesome Carrot",
-    "score": 584,
-    "id": 958824151893
+    "name": "Marty the Rainbow",
+    "score": 120
 }
 
 

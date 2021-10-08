@@ -25,10 +25,8 @@ The logic behind the game was made in JavaScript, I tried to use as many differe
 
 ## Back end
 
-The high scores are stored in a lowDB database that is handled by an Express server. When Hall of Fame is displayed it sends a GET request to the server, that read the high scores in the database. When a score is submitted a POST request will be send to the server that will add a name and score in the database.
+The high scores are stored in a mongoDB database that is handled by an Express server. When Hall of Fame is displayed it sends a GET request to the server, that read the high scores in the database. When a score is submitted a POST request will be send to the server that will add a name and score in the database.
 
 ### Final Note
-
-Unfortunately after this application was deployed I realized lowDB doesn't work on Heroku. Therefore, I will replace lowDB with postgreSQL that should work on Heroku. However, because I never worked with Postgres before this might take a while.
 
 The structure of an Express back end and a React frontend that is able to be deployed to a single Heroku app was made based on the tutorial from: https://daveceddia.com/deploy-react-express-app-heroku/.
