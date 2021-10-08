@@ -4,6 +4,7 @@ import Cards from './components/Cards';
 import ScoreBoard from './components/ScoreBoard';
 import SubmitScores from './components/SubmitScores';
 import ShowScores from './components/ShowScores';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     const [showSubmit, setShowSubmit] = useState(false);
