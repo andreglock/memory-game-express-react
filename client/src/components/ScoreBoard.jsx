@@ -1,15 +1,18 @@
+import { useContext } from 'react';
 import checkPair from '../functions/checkPair';
 import timerHandler from '../functions/timerHandler';
+import { ScoreContext } from '../contexts/scores';
 
-export default function ScoreBoard () {    
-    
+export default function ScoreBoard () {
+    const {scores} = useContext(ScoreContext);
+
     return <div id="scoreboard" className="d-flex mx-auto">
         <div>
             <div className="p-1">Matched pairs:
-                <span id="matched" className="p-1">0</span>
+                <span id="matched" className="p-1">{scores.matched}</span>
             </div>
             <div className="p-1">Wrong tries:
-                <span id="wrong" className="p-1">0</span>
+                <span id="wrong" className="p-1">{scores.wrong}</span>
             </div>
         </div>
         <button className="mx-md-3 py-2 px-4 px-lg-5" onClick={(e) => {

@@ -1,14 +1,23 @@
+import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { ScoreContext } from '../contexts/scores';
 import timerHandler from "../functions/timerHandler";
 import ScoreDetail from './ScoreDetail';
 
 export default function SubmitScores (props) {
+    const {scores, setScores} = useContext(ScoreContext);
   
     const handleClose = () => {
         // reset wrong:
         document.getElementById('timer').innerText = "0:000";
         document.getElementById('wrong').innerText = "0";
+        setScores(() => {
+            return {
+                matched: 0,
+                wrong: 0
+            }
+        });
         props.setShow(false);
     }
 
@@ -19,16 +28,7 @@ export default function SubmitScores (props) {
     timerHandler('', 'stop');
     const timeArray = displayedTime.split(':');
     const elapsedSeconds = ( (parseInt(timeArray[0]) * 600) + parseInt(timeArray[1]) ) / 10;
-
-    let wrong = document.getElementById('wrong').innerText;
-    wrong = parseInt(wrong);
-    score = 10000 * ( 1 / ( elapsedSeconds + wrong * 2 ) );
-
-    // flip back:
-    const cards = document.querySelectorAll('.flip-card')
-    cards.forEach((e) => {
-        e.classList.remove('flipped');
-    })
+    score = 10000 * ( 1 / ( elapsedSeconds / 2 + scores.wrong * 2 ) );
 
     return (
         <>  
@@ -46,7 +46,6 @@ export default function SubmitScores (props) {
                     
                 </Modal.Header>
                 <Modal.Body>
-                    {/* ToDo: finish form and submit */}
                     <form>
                         <label htmlFor="playerName">Name:</label>
                         <input id="playerName" name="playerName" type="text" placeholder="your name here" required minLength="3"  maxLength="22"/>

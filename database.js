@@ -16,7 +16,3 @@ export async function connect() {
 
     await mongoose.connect(connectionString);
 }
-
-export async function disconnect () {
-    await mongoose.disconnect();
-}

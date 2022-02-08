@@ -6,25 +6,46 @@ import five from '../images/pairFive.jpg';
 import six from '../images/pairSix.jpg';
 import seven from '../images/pairSeven.jpg';
 import eight from '../images/pairEight.jpg';
-import createCard from '../functions/createCard';
+import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import Card from './Card';
 
-export default function Cards (props) {
-    const images = [
-        one, two, three, four, five, six, seven, eight,
-        one, two, three, four, five, six, seven, eight,
-    ];
+const Cards = React.memo(props => {
+    
+    const [cardImages, setCardImages] = useState([]);
 
-    const cards = [];
-
-    // Add images randomly
-    while (images.length > 0) {
-        const randomIndex = Math.floor(Math.random() * images.length);
-        const cardTemp = createCard(images[randomIndex], props.setShow);
-        cards.push(cardTemp);
-        images.splice(randomIndex, 1);
+    const shufleImages = () => {
+        const placeholder = [];
+        const images = [
+            one, two, three, four, five, six, seven, eight,
+            one, two, three, four, five, six, seven, eight,
+        ];
+        // Add images randomly
+        while (placeholder.length < 16) {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            //const cardTemp = createCard(images[randomIndex], props.setShow, scoreValue);
+            placeholder.push(images[randomIndex]);
+            images.splice(randomIndex, 1);
+        }
+        setCardImages(placeholder);
     }
 
+    useEffect(() => {
+        shufleImages();
+    }, []);
+
     return <div id="gameContainer">
-        {cards}
+        {cardImages ? 
+            cardImages.map(image => <Card 
+                image={image} 
+                setShow={props.setShow} 
+                key={Math.floor(Math.random() * 100000)}
+                shufleImages={shufleImages} 
+            />)
+            : <div>Loading images...</div>
+        }
     </div>;
-}
+});
+
+export default Cards;

@@ -4,7 +4,7 @@ import { wrongCounter, matchedCounter } from "./scoreCounter";
 let firstCard = undefined;
 let clicked = 2;
 
-export default function checkPair (card, command, setShow) {
+export default function checkPair (card, command, setShow, scoreValue, shufleImages) {
     
     // disabled before start button is clicked
     if (command === 'start') {
@@ -30,10 +30,10 @@ export default function checkPair (card, command, setShow) {
             // restart clicked
             clicked = 0;
             // iterate matched
-            matchedCounter(setShow);
+            matchedCounter(setShow, scoreValue, shufleImages);
         } else {
             // iterate wrong counter
-            wrongCounter();
+            wrongCounter(scoreValue);
             setTimeout(() => {
                 card.classList.remove("flipped");
                 firstCard.classList.remove("flipped");

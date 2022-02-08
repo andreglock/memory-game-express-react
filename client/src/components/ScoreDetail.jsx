@@ -6,7 +6,7 @@ export default function ScoreDetail () {
                 Your score is calculated based on the wrong pairs and the elapsed time, with the following function:
             </p>
             <p>
-                score = 10000 * ( 1 / ( elapsedSeconds + wrong * 2 ) )
+                score = 10000 * ( 1 / ( elapsedSeconds / 2 + wrong tries * 2 ) )
             </p>
         </div>
     </div>

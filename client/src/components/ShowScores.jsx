@@ -16,13 +16,12 @@ export default function ShowScores (props) {
                 if (data.length > 14) {
                     const moreData = data.splice(15);
                     setMoreScores(moreData);
-                    console.log(moreScores) 
-                    // this is here to avoid a non usage warning before I reach 15 scores
+                    console.log(moreScores);// <= this is here to avoid a non usage warning before I reach 15 scores
                 }
                 setScores(data);
                 })
             .catch(err => console.warn(err));
-    }, [])
+    }, [moreScores])
 
     return (
         <>  
