@@ -2,33 +2,35 @@ import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ScoreContext } from '../contexts/scores';
+import { TimerContext } from '../contexts/timer';
 import timerHandler from "../functions/timerHandler";
 import ScoreDetail from './ScoreDetail';
 
 export default function SubmitScores (props) {
     const {scores, setScores} = useContext(ScoreContext);
+    const {time, setTime} = useContext(TimerContext);
   
     const handleClose = () => {
         // reset wrong:
-        document.getElementById('timer').innerText = "0:000";
-        document.getElementById('wrong').innerText = "0";
         setScores(() => {
             return {
                 matched: 0,
                 wrong: 0
             }
         });
+        // reset timer:
+        timerHandler(setTime, 'reset');
         props.setShow(false);
     }
 
     let score = 0;
 
     // calculate score:
-    const displayedTime = document.getElementById('timer').innerText;
-    timerHandler('', 'stop');
-    const timeArray = displayedTime.split(':');
+    const timeArray = time.split(':');
     const elapsedSeconds = ( (parseInt(timeArray[0]) * 600) + parseInt(timeArray[1]) ) / 10;
     score = 10000 * ( 1 / ( elapsedSeconds / 2 + scores.wrong * 2 ) );
+    // reset timer after recording the elapsedSeconds
+    timerHandler(setTime, 'stop');
 
     return (
         <>  

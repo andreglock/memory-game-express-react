@@ -6,6 +6,7 @@ import SubmitScores from './components/SubmitScores';
 import ShowScores from './components/ShowScores';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ScoreContext } from './contexts/scores';
+import { TimerContext } from './contexts/timer';
 
 function App() {
     const [showSubmit, setShowSubmit] = useState(false);
@@ -14,30 +15,33 @@ function App() {
 		matched: 0,
 		wrong: 0
 	});
+	const [time, setTime] = useState('0:000');
 	const scoreValue = {scores, setScores};
-
+	const timerValue = {time, setTime};
 
 	return <>
 		<ScoreContext.Provider value={scoreValue}>
-			<Cards setShow={setShowSubmit}/>
-			<ScoreBoard />
-			{showSubmit ?
-				<SubmitScores 
-					setShow={setShowSubmit}
-					show={showSubmit}
-				/> :
-				<></>
-			}
-			<button className="btn btn-dark m-auto d-block" onClick={() => setShowScores(true)}>
-				Hall of Fame
-			</button>
-			{showScores ?
-				<ShowScores 
-					setShow={setShowScores}
-					show={showScores}
-				/> :
-				<></>
-			}
+			<TimerContext.Provider value={timerValue}>
+				<Cards setShow={setShowSubmit}/>
+				<ScoreBoard />
+				{showSubmit ?
+					<SubmitScores 
+						setShow={setShowSubmit}
+						show={showSubmit}
+					/> :
+					<></>
+				}
+				<button className="btn btn-dark m-auto d-block" onClick={() => setShowScores(true)}>
+					Hall of Fame
+				</button>
+				{showScores ?
+					<ShowScores 
+						setShow={setShowScores}
+						show={showScores}
+					/> :
+					<></>
+				}
+			</TimerContext.Provider>
 		</ScoreContext.Provider>
 	</>
 }
