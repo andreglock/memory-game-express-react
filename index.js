@@ -34,4 +34,4 @@ app.use(globalErrorHandler);
 const port = process.env.PORT || 5000;
 app.listen(port);
 
-console.log(`Posts page listening on ${port}`);
+console.log(`Posts page listening on port: ${port}`);

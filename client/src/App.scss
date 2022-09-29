@@ -52,6 +52,12 @@
     display: block;
 }
 
+/* Score list style */
+.scorelist {
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
 .card-size {
     height: 80px;
     width: 80px;

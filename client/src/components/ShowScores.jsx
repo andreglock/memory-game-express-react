@@ -35,7 +35,7 @@ export default function ShowScores (props) {
                     <Modal.Title>Hall of Fame:</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ol className="list-group list-group-numbered">
+                    <ol className="list-group list-group-numbered scorelist">
                         {scores ?
                         scores.map((score) => 
                         <li className="d-flex list-group-item" key={ Math.floor( Math.random() * 100000 ) }>

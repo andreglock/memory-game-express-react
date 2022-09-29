@@ -8,8 +8,14 @@ export async function postsGet(req, res) {
 }
 
 export async function postsPost(req, res) {
-    connect();
     const score = req.body;
+    if (score.score > 1000 || score < 0) {
+        res.status(401);
+        res.json({
+            message: "Cheating attempt detected"
+        });
+    }
+    connect();
     await Score.create(score);
 
     res.status(201);
